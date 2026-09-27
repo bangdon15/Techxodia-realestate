@@ -11,6 +11,32 @@ An ultra-modern, editorial real estate portfolio designed to break away from gen
 
 ---
 
+## 📸 Visual Showcase
+
+### 1. Editorial Masthead & Dynamic Hero Canvas
+High-impact hero section featuring algorithmic top-value asset selection, auto-rotating architectural photography, live valuation metrics, and synchronized crossfade timers.
+
+![VALENCE // DOMAIN Desktop Hero](assets/screenshots/hero-desktop.png)
+
+### 2. Asymmetrical Architectural Masonry Grid
+Bespoke 12-column layout breaking away from standard templates with varied rhythmic spans (7-col panoramas, 5-col portrait monoliths, and 4-col architectural quote breather blocks).
+
+![VALENCE // DOMAIN Portfolio Showcase](assets/screenshots/portfolio-showcase.png)
+
+### 3. Native `<dialog>` Slide-Out Architectural Dossier
+Interactive specification panel with discrete CSS entry/exit transitions, multi-image gallery thumbnail switcher, comprehensive structural metrics table, and confidential dossier dispatch action.
+
+![VALENCE // DOMAIN Quick View Modal](assets/screenshots/quick-view-modal.png)
+
+### 4. Adaptive Mobile Filter Compression Bar
+Engineered specifically for mobile viewports. The dense filter matrix collapses into an ultra-slim 44px sticky bar with real-time active filter state, leaving >90% of screen real estate open for unobstructed scrolling.
+
+<div align="center">
+  <img src="assets/screenshots/mobile-compressed-filter.png" alt="VALENCE // DOMAIN Mobile Viewport" width="420" />
+</div>
+
+---
+
 ## 🏛️ Design Philosophy: The "Anti-Template" Look
 
 Traditional real estate portals rely on cookie-cutter grid systems and corporate blue palettes. **VALENCE // DOMAIN** is designed as a digital architectural monograph:
@@ -93,14 +119,17 @@ Components are decoupled from hardcoded markup, ingesting structured data from a
 
 ```
 Techxodia-realestate/
-├── index.html            # Semantic HTML5 architecture, typography & landmarks
+├── assets/
+│   └── screenshots/      # High-resolution interface captures & mobile previews
 ├── css/
 │   └── style.css         # Complete editorial design system & responsive layout
 ├── js/
 │   ├── data.js           # Architectural mock database & asynchronous client
 │   └── app.js            # Core application controller, carousel & modal logic
 ├── scripts/
+│   ├── capture-screenshots.js # Headless Chrome screenshot automation
 │   └── server.js         # Lightweight local preview HTTP server (Node.js)
+├── index.html            # Semantic HTML5 architecture, typography & landmarks
 ├── vercel.json           # Vercel static deployment configuration
 ├── .gitignore            # Git exclusion rules
 └── README.md             # Project documentation
