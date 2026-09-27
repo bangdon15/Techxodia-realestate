@@ -119,62 +119,93 @@
          ========================================================================= -->
     <section class="filter-sticky-anchor" id="filter-anchor" aria-label="Portfolio Database Filters">
       <div class="filter-container">
-        <!-- Primary Filter Controls: Pill Toggles & Search -->
-        <div class="filter-row-primary">
-          <!-- Architectural Style Filter Pills -->
-          <div class="filter-group">
-            <span class="filter-label">Movement:</span>
-            <div class="pill-list" id="stylePillContainer" role="radiogroup" aria-label="Filter by architectural style">
-              <!-- Rendered dynamically -->
-            </div>
+        
+        <!-- Mobile Compression Bar (Visible only on mobile devices) -->
+        <div class="mobile-filter-bar" id="mobileFilterBar">
+          <div class="mobile-filter-summary">
+            <span class="mobile-pulse-dot"></span>
+            <span class="mobile-filter-summary-text" id="mobileFilterSummary">All Movements • All Availability</span>
           </div>
-
-          <!-- Auxiliary Search & Sort Controls -->
-          <div class="filter-controls-aux">
-            <!-- Search Input -->
-            <div class="search-box-wrapper">
-              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              </svg>
-              <input 
-                type="text" 
-                class="search-input" 
-                id="searchInput" 
-                placeholder="Search archive or architect..." 
-                aria-label="Search properties"
-              />
-            </div>
-
-            <!-- Sort By Selector -->
-            <div class="sort-select-wrapper">
-              <select class="sort-select" id="sortSelect" aria-label="Sort properties">
-                <option value="curated">Sort: Curated Sequence</option>
-                <option value="price-desc">Valuation: High to Low</option>
-                <option value="price-asc">Valuation: Low to High</option>
-                <option value="sqft-desc">Interior Area: Largest</option>
-              </select>
-              <svg class="select-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </div>
-          </div>
+          <button type="button" class="btn-filter-toggle" id="btnFilterToggle" aria-expanded="false" aria-controls="collapsibleFilterBody" aria-label="Toggle Movement and Availability Filters">
+            <svg class="toggle-icon-sliders" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="4" y1="21" x2="4" y2="14"></line>
+              <line x1="4" y1="10" x2="4" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12" y2="3"></line>
+              <line x1="20" y1="21" x2="20" y2="16"></line>
+              <line x1="20" y1="12" x2="20" y2="3"></line>
+              <line x1="1" y1="14" x2="7" y2="14"></line>
+              <line x1="9" y1="8" x2="15" y2="8"></line>
+              <line x1="17" y1="16" x2="23" y2="16"></line>
+            </svg>
+            <span class="toggle-text" id="filterToggleText">Filter & Sort</span>
+            <svg class="toggle-chevron" id="filterToggleChevron" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
         </div>
 
-        <!-- Status Badge Filter Row -->
-        <div class="filter-row-secondary">
-          <div class="filter-group">
-            <span class="filter-label">Availability:</span>
-            <div class="pill-list" id="statusPillContainer" role="radiogroup" aria-label="Filter by transactional status">
-              <!-- Rendered dynamically -->
+        <!-- Collapsible Filter Body (Always visible on desktop, compressed/collapsible on mobile) -->
+        <div class="collapsible-filter-body" id="collapsibleFilterBody">
+          <!-- Primary Filter Controls: Pill Toggles & Search -->
+          <div class="filter-row-primary">
+            <!-- Architectural Style Filter Pills -->
+            <div class="filter-group">
+              <span class="filter-label">Movement:</span>
+              <div class="pill-list" id="stylePillContainer" role="radiogroup" aria-label="Filter by architectural style">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+            <!-- Auxiliary Search & Sort Controls -->
+            <div class="filter-controls-aux">
+              <!-- Search Input -->
+              <div class="search-box-wrapper">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input 
+                  type="text" 
+                  class="search-input" 
+                  id="searchInput" 
+                  placeholder="Search archive or architect..." 
+                  aria-label="Search properties"
+                />
+              </div>
+
+              <!-- Sort By Selector -->
+              <div class="sort-select-wrapper">
+                <select class="sort-select" id="sortSelect" aria-label="Sort properties">
+                  <option value="curated">Sort: Curated Sequence</option>
+                  <option value="price-desc">Valuation: High to Low</option>
+                  <option value="price-asc">Valuation: Low to High</option>
+                  <option value="sqft-desc">Interior Area: Largest</option>
+                </select>
+                <svg class="select-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
             </div>
           </div>
 
-          <div style="display: flex; align-items: center; gap: 1.5rem;">
-            <span class="filter-status-output">
-              Holdings: <strong id="filterCountDisplay">Loading...</strong> (<span id="activeFilterName">Entire Archive</span>)
-            </span>
-            <button type="button" class="btn-reset-filters" id="resetFiltersBtn">Reset Filters</button>
+          <!-- Status Badge Filter Row -->
+          <div class="filter-row-secondary">
+            <div class="filter-group">
+              <span class="filter-label">Availability:</span>
+              <div class="pill-list" id="statusPillContainer" role="radiogroup" aria-label="Filter by transactional status">
+                <!-- Rendered dynamically -->
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+              <span class="filter-status-output">
+                Holdings: <strong id="filterCountDisplay">Loading...</strong> (<span id="activeFilterName">Entire Archive</span>)
+              </span>
+              <button type="button" class="btn-reset-filters" id="resetFiltersBtn">Reset Filters</button>
+              <!-- Mobile Done/Compress Action Button -->
+              <button type="button" class="btn-mobile-done" id="btnMobileCompressDone">Hide / Compress Filters ▴</button>
+            </div>
           </div>
         </div>
       </div>

@@ -45,7 +45,13 @@ class RealEstatePortfolioApp {
       quickViewModal: document.getElementById('quickViewModal'),
       modalContent: document.getElementById('modalContent'),
       closeModalBtn: document.getElementById('closeModalBtn'),
-      toastStack: document.getElementById('toastStack')
+      toastStack: document.getElementById('toastStack'),
+      mobileFilterBar: document.getElementById('mobileFilterBar'),
+      btnFilterToggle: document.getElementById('btnFilterToggle'),
+      collapsibleFilterBody: document.getElementById('collapsibleFilterBody'),
+      filterToggleText: document.getElementById('filterToggleText'),
+      mobileFilterSummary: document.getElementById('mobileFilterSummary'),
+      btnMobileCompressDone: document.getElementById('btnMobileCompressDone')
     };
 
     this.init();
@@ -241,6 +247,16 @@ class RealEstatePortfolioApp {
       this.resetAllFilters();
     });
 
+    // Mobile Compression Toggle button
+    this.dom.btnFilterToggle?.addEventListener('click', () => {
+      this.toggleMobileFilters();
+    });
+
+    // Mobile Hide/Compress Done button
+    this.dom.btnMobileCompressDone?.addEventListener('click', () => {
+      this.toggleMobileFilters(false);
+    });
+
     // Modal Close button (if present in DOM)
     this.dom.closeModalBtn?.addEventListener('click', () => {
       this.closeQuickView();
@@ -271,6 +287,20 @@ class RealEstatePortfolioApp {
       e.preventDefault();
       this.closeQuickView();
     });
+  }
+
+  toggleMobileFilters(forceState) {
+    if (!this.dom.collapsibleFilterBody) return;
+    const isCurrentlyExpanded = this.dom.collapsibleFilterBody.classList.contains('is-expanded');
+    const nextState = typeof forceState === 'boolean' ? forceState : !isCurrentlyExpanded;
+
+    this.dom.collapsibleFilterBody.classList.toggle('is-expanded', nextState);
+    this.dom.btnFilterToggle?.classList.toggle('active', nextState);
+    this.dom.btnFilterToggle?.setAttribute('aria-expanded', String(nextState));
+
+    if (this.dom.filterToggleText) {
+      this.dom.filterToggleText.textContent = nextState ? 'Compress' : 'Filter & Sort';
+    }
   }
 
   updatePillActiveClass(container, activeVal) {
@@ -313,6 +343,17 @@ class RealEstatePortfolioApp {
     this.dom.activeFilterName.textContent = this.state.activeStyleFilter === 'All' && this.state.activeStatusFilter === 'All'
       ? 'Entire Archive'
       : `${this.state.activeStyleFilter} • ${this.state.activeStatusFilter}`;
+
+    // Update Mobile Compression Bar Summary
+    if (this.dom.mobileFilterSummary) {
+      if (this.state.activeStyleFilter === 'All' && this.state.activeStatusFilter === 'All') {
+        this.dom.mobileFilterSummary.textContent = `All Holdings (${filteredCount})`;
+      } else {
+        const styleText = this.state.activeStyleFilter === 'All' ? 'All' : this.state.activeStyleFilter;
+        const statusText = this.state.activeStatusFilter === 'All' ? 'All' : this.state.activeStatusFilter;
+        this.dom.mobileFilterSummary.textContent = `${styleText} • ${statusText} (${filteredCount})`;
+      }
+    }
 
     if (results.length === 0) {
       this.dom.portfolioGrid.innerHTML = `
