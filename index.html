@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALENCE // Curated Architectural Holdings & Living Monoliths</title>
+  <meta name="description" content="An ultra-modern, bespoke portfolio of world-class architectural acquisitions, brutalist monoliths, and minimalist residences curated by Valence & Domain.">
+  <meta name="keywords" content="architecture, luxury real estate, brutalist modernism, minimal villas, architectural portfolio, bespoke residences">
+  <meta name="theme-color" content="#090a0d">
+
+  <!-- OpenGraph / Social Metadata -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="VALENCE // Bespoke Architectural Portfolio">
+  <meta property="og:description" content="Discover rare living monoliths and organic contemporary sanctuaries. Built on a dynamic property database.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85">
+
+  <!-- Google Fonts: Editorial Serif + Clean Sans + Monospace -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Subtle Film Grain Overlay for Editorial Tactility -->
+  <div class="ambient-grain" aria-hidden="true"></div>
+
+  <!-- =========================================================================
+       MASTHEAD / NAVIGATION
+       ========================================================================= -->
+  <header class="masthead" id="masthead">
+    <div class="brand-wrapper">
+      <a href="#hero" class="brand-logo" aria-label="Valence Home">
+        <span class="logo-glyph"></span>
+        <span>VALENCE</span>
+      </a>
+      <span class="brand-tagline">Architectural Atelier // Private Register</span>
+    </div>
+
+    <div class="masthead-meta">
+      <div class="db-live-indicator" title="Curated Active Register">
+        <span class="pulse-dot"></span>
+        <span>Active Register // 2026</span>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-links">
+          <li><a href="#showcase" class="nav-link">Acquisitions</a></li>
+          <li><a href="#filter-anchor" class="nav-link">Movements</a></li>
+          <li><a href="#editorial" class="nav-link">Monograph</a></li>
+        </ul>
+      </nav>
+
+      <button class="btn-inquire-direct" onclick="document.getElementById('showcase').scrollIntoView({behavior: 'smooth'})">
+        Examine Archive
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         IMMERSIVE DYNAMIC HERO
+         Split-screen editorial intro with auto-rotating top 3 highest-value holdings
+         ========================================================================= -->
+    <section class="hero-section" id="hero" aria-label="Featured Architectural Holdings">
+      <!-- Auto-Rotating Dynamic Background Canvas -->
+      <div class="hero-slider-container" id="heroSlider">
+        <!-- Injected dynamically by app.js from top 3 database properties -->
+      </div>
+      <div class="hero-backdrop-gradient"></div>
+      <div class="hero-radial-vignette"></div>
+
+      <!-- Split-Screen Editorial Content -->
+      <div class="hero-content">
+        <!-- Left Column: Editorial Headline & Stance -->
+        <div class="hero-text-block">
+          <div class="hero-meta-kicker">
+            <span class="kicker-line"></span>
+            <span>Atelier & Domain // Issue 2026</span>
+          </div>
+
+          <h1 class="hero-headline">
+            Residences of <em>singular</em> structural vision.
+          </h1>
+
+          <p class="hero-lead-paragraph">
+            Rejecting the disposable paradigms of speculative development. We curate living monoliths, brutalist pavilions, and earth-anchored sanctuaries that challenge convention and outlast generations.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#showcase" class="btn-primary-explore">
+              <span>Examine The Collection</span>
+              <span class="btn-arrow">↓</span>
+            </a>
+            <a href="#filter-anchor" class="btn-secondary-link">
+              <span>Survey By Movement</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Live Data Card (Computed from Top 3 Valued Records) -->
+        <div class="hero-featured-card" id="heroFeaturedCard" aria-live="polite">
+          <!-- Populated dynamically via app.js -->
+        </div>
+      </div>
+
+      <!-- Hero Carousel Progress Indicators -->
+      <div class="slider-progress-bars" id="heroProgressBars" role="tablist" aria-label="Hero slider pagination">
+        <!-- Populated dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         DATABASE QUERY & FILTER INTERFACE
+         Interactive pill-shaped toggles for architectural_style & status_badge
+         ========================================================================= -->
+    <section class="filter-sticky-anchor" id="filter-anchor" aria-label="Portfolio Database Filters">
+      <div class="filter-container">
+        <!-- Primary Filter Controls: Pill Toggles & Search -->
+        <div class="filter-row-primary">
+          <!-- Architectural Style Filter Pills -->
+          <div class="filter-group">
+            <span class="filter-label">Movement:</span>
+            <div class="pill-list" id="stylePillContainer" role="radiogroup" aria-label="Filter by architectural style">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Auxiliary Search & Sort Controls -->
+          <div class="filter-controls-aux">
+            <!-- Search Input -->
+            <div class="search-box-wrapper">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input 
+                type="text" 
+                class="search-input" 
+                id="searchInput" 
+                placeholder="Search archive or architect..." 
+                aria-label="Search properties"
+              />
+            </div>
+
+            <!-- Sort By Selector -->
+            <div class="sort-select-wrapper">
+              <select class="sort-select" id="sortSelect" aria-label="Sort properties">
+                <option value="curated">Sort: Curated Sequence</option>
+                <option value="price-desc">Valuation: High to Low</option>
+                <option value="price-asc">Valuation: Low to High</option>
+                <option value="sqft-desc">Interior Area: Largest</option>
+              </select>
+              <svg class="select-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status Badge Filter Row -->
+        <div class="filter-row-secondary">
+          <div class="filter-group">
+            <span class="filter-label">Availability:</span>
+            <div class="pill-list" id="statusPillContainer" role="radiogroup" aria-label="Filter by transactional status">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 1.5rem;">
+            <span class="filter-status-output">
+              Holdings: <strong id="filterCountDisplay">Loading...</strong> (<span id="activeFilterName">Entire Archive</span>)
+            </span>
+            <button type="button" class="btn-reset-filters" id="resetFiltersBtn">Reset Filters</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         THE PORTFOLIO SHOWCASE (DATA-DRIVEN ASYMMETRICAL GRID)
+         Staggered layout injecting {property_title}, {price_formatted}, etc.
+         ========================================================================= -->
+    <section class="portfolio-showcase-section" id="showcase" aria-label="Acquisitions Gallery">
+      <header class="section-editorial-header">
+        <div>
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent-travertine);">
+            Catalogue of Works
+          </span>
+          <h2 class="section-title">Asymmetrical Living Forms</h2>
+        </div>
+        <p class="section-desc">
+          Each monograph is individually surveyed, structural integrity verified, and represented with confidential provenance. Click any property to inspect high-resolution dossier and specs.
+        </p>
+      </header>
+
+      <!-- Asymmetrical Staggered Masonry Grid Container -->
+      <div class="masonry-portfolio-grid" id="portfolioGrid">
+        <!-- Dynamically populated by app.js from the database query engine -->
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       QUICK-VIEW SLIDE-OUT PANEL / MODAL (<dialog>)
+       Native modern dialog with discrete transition behavior and @starting-style
+       ========================================================================= -->
+  <dialog id="quickViewModal" aria-label="Property Technical Dossier">
+    <div class="modal-wrapper" id="modalContent">
+      <!-- Rendered dynamically on card selection -->
+    </div>
+  </dialog>
+
+  <!-- =========================================================================
+       TOAST NOTIFICATION STACK (Interactive feedback)
+       ========================================================================= -->
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+  <!-- =========================================================================
+       EDITORIAL COLOPHON FOOTER
+       ========================================================================= -->
+  <footer class="colophon-footer" id="editorial">
+    <div class="footer-inner">
+      <div class="footer-brand-summary">
+        <span class="footer-logo">VALENCE // DOMAIN</span>
+        <p class="footer-text">
+          An international architectural brokerage and curatorial bureau dedicated solely to iconic 20th and 21st-century residential monuments.
+        </p>
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-travertine);">
+          MEMBERSHIP BY INVITATION & DIRECT INTRODUCTION
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h5>Movements</h5>
+        <ul>
+          <li><a href="#filter-anchor">Brutalist Modernism</a></li>
+          <li><a href="#filter-anchor">Organic Contemporary</a></li>
+          <li><a href="#filter-anchor">Desert Minimalist</a></li>
+          <li><a href="#filter-anchor">Bauhaus Revival</a></li>
+          <li><a href="#filter-anchor">Nordic Biophilic</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h5>Curatorial Hubs</h5>
+        <ul>
+          <li><a href="#showcase">Beverly Hills // Trousdale</a></li>
+          <li><a href="#showcase">The Hamptons // Amagansett</a></li>
+          <li><a href="#showcase">Paradise Valley // Camelback</a></li>
+          <li><a href="#showcase">Berlin // Grunewald</a></li>
+          <li><a href="#showcase">Oslo // Holmenkollen</a></li>
+          <li><a href="#showcase">Tuscany // Val d'Orcia</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h5>Protocol</h5>
+        <ul>
+          <li><a href="#quickViewModal" onclick="event.preventDefault(); window.ValencePortfolio?.openQuickView('vlc-001')">Examine Specimen 01</a></li>
+          <li><a href="#editorial">Acoustic & Thermal Audits</a></li>
+          <li><a href="#editorial">Title & Provenance Vault</a></li>
+          <li><a href="#editorial">Private Wire Transfers</a></li>
+          <li><a href="#editorial">Off-Market Non-Disclosure</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <span>© 2026 VALENCE ATELIER INC. ALL ARCHITECTURAL ASSETS PROTECTED UNDER REGISTERED COPYRIGHT.</span>
+      <span>RESTRICTED ACCESS // PROTOCOL ENCRYPTED</span>
+    </div>
+  </footer>
+
+  <!-- Application Logic (ES6 Module) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
